@@ -26,4 +26,5 @@ return {
       require('telescope').load_extension 'lazygit'
     end,
   },
+  { 'rose-pine/neovim', name = 'rose-pine' },
 }
