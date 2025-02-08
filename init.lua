@@ -195,6 +195,38 @@ vim.keymap.set('n', '<leader>w|', ':vsplit<CR>', { desc = 'Split window vertical
 vim.keymap.set('n', '<leader>x', ':bd<CR>', { desc = 'Close current buffer' })
 vim.keymap.set('n', '-', '<cmd>Oil<CR>', { desc = 'Open parent directory' })
 
+-- BACKGROUND TRANSPARENCY/OPACITY
+local function set_transparent_bg()
+  -- Set every possible background-related highlight to NONE
+  local groups = {
+    'Normal',
+    'NonText',
+    'SignColumn',
+    'StatusLine',
+    'StatusLineNC',
+    'LineNr',
+    'VertSplit',
+    'WinSeparator',
+    'NormalFloat',
+    'FloatBorder',
+    'NormalNC',
+    'EndOfBuffer',
+  }
+
+  for _, group in ipairs(groups) do
+    vim.cmd(string.format('highlight %s guibg=NONE ctermbg=NONE', group))
+  end
+end
+
+-- Run when Neovim starts
+set_transparent_bg()
+-- BACKGROUND TRANSPARENCY
+
+-- Run when colorscheme changes
+vim.api.nvim_create_autocmd('ColorScheme', {
+  callback = set_transparent_bg,
+})
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
