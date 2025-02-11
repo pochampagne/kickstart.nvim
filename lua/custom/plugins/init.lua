@@ -101,6 +101,25 @@ return {
     end,
   },
 
+  -- git blame
+  {
+    'FabijanZulj/blame.nvim',
+    lazy = false,
+    config = function()
+      require('blame').setup {}
+    end,
+  },
+
+  -- Zen
+  {
+    'folke/zen-mode.nvim',
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+  },
+
   -- rose-pine
   { 'rose-pine/neovim', name = 'rose-pine' },
 }
